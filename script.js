@@ -1,5 +1,5 @@
 // Set your API key here
-const APIKEY = 'onemillionwallets';
+const APIKEY = 'ckey_d81ab58d3ef748dba534888bbc1';
 
 // List of supported_collection
 const supported_collection = [
@@ -8,7 +8,7 @@ const supported_collection = [
     "address": "0x0540E4EE0C5CdBA347C2f0E011ACF8651bB70Eb9"
   },
   {
-    "name": "Avaxtars",
+    "name": "Avaxstars",
     "address": "0x53d2230EAC25643cd0772B310EEBb569a100eA73"
   },
   {
@@ -31,10 +31,16 @@ function getNFTIdData() {
     const tableRef = document.getElementById('tokenTable').getElementsByTagName('tbody')[0];
     tableRef.innerHTML = "";
 
+    
+
     // Covalent API request setup
     const address = document.getElementById('address').value || '0x0540E4EE0C5CdBA347C2f0E011ACF8651bB70Eb9';
 
-    const url = new URL(`https://api.covalenthq.com/v1/43114/tokens/${address}/nft_token_ids/`);
+
+    //chain choice
+    const chainId = document.getElementById('chain').value || '1';
+    const url = new URL(`https://api.covalenthq.com/v1/${chainId}/tokens/${address}/nft_token_ids/`);
+
     url.search = new URLSearchParams({
         key: APIKEY
     })
@@ -74,9 +80,11 @@ function getNFTMetaData() {
 
     // Covalent API request setup
     const address = document.getElementById('address').value;
-    const tokenId = document.getElementById('tokenId').value;    
+    const tokenId = document.getElementById('tokenId').value;
+    //chain choice
+    const chainId = document.getElementById('chain').value || '1';    
 
-    const url = new URL(`https://api.covalenthq.com/v1/43114/tokens/${address}/nft_metadata/${tokenId}/`);
+    const url = new URL(`https://api.covalenthq.com/v1/${chainId}/tokens/${address}/nft_metadata/${tokenId}/`);
     url.search = new URLSearchParams({
         key: APIKEY
     })
