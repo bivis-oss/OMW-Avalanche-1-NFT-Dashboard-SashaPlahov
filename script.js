@@ -22,7 +22,17 @@ const supported_collection = [
   {
     "name": "Koios",
     "address": "0x45D794FFCBe134E2BAf81126373A7DaA950aF69c"
+  },
+  {
+    "name": "Snowies",
+    "address": "0xB9EB63cCa0B57EeE107958626cA075F0d84FC4dD"
   }
+  ,
+  {
+    "name": "SPORE",
+    "address": "0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985"
+  }
+  
 ]
 
 function getNFTIdData() {
@@ -34,7 +44,7 @@ function getNFTIdData() {
     
 
     // Covalent API request setup
-    const address = document.getElementById('address').value || '0x0540E4EE0C5CdBA347C2f0E011ACF8651bB70Eb9';
+    const address = document.getElementById('address').value || supported_collection.address;
 
 
     //chain choice
@@ -112,7 +122,8 @@ function getNFTMetaData() {
             
             `<td> <img src="${token.nft_data[0].external_data.image}" width=200 height=200></img></td>` +
             `<td><a href="https://cchain.explorer.avax.network/address/${token.nft_data[0].owner}" target="_blank"> ${token.nft_data[0].owner} </a></td>` +
-            `<td><a href="${token.nft_data[0].token_url}">View API data</a> </td>`;
+            `<td><a href="${token.nft_data[0].token_url}">View API data</a> </td>` +
+            `<td><a href="https://cchain.explorer.avax.network/tokens/${address}/instance/${tokenId}/token-transfers">NFT [${tokenId}]</a> </td>`;
         })
     })
 }
